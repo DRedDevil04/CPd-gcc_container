@@ -1,0 +1,21 @@
+# Fetching the minified node image on apline linux
+FROM node:slim
+
+# Declaring env
+ENV NODE_ENV development
+
+# Setting up the work directory
+WORKDIR /trial
+
+# Copying all the files in our project
+COPY . .
+
+# Installing dependencies
+RUN npm install
+RUN apt-get update
+RUN apt-get install -y gcc
+# Starting our application
+CMD [ "node", "trial.js" ]
+
+# Exposing server port
+EXPOSE 3000
