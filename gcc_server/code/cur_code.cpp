@@ -1,5 +1,10 @@
-#include <stdio.h>
+#include <bits/stdc++.h>
+
+using namespace std;
 int main(){
-    printf("\nHello World, Devam is GOAT\n");
-    return 0;
+
+	string h="Hello World Devam";
+	cout<<h<<endl;
+	l
+	return 0;
 }

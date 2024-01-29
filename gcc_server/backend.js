@@ -18,9 +18,14 @@ app.post('/upload', (req, res) => {
         
         
     });
-    exec(`gcc -o hello ./code/cur_code.cpp`, (error, stdout, stderr) => { 
+    exec(`g++-13 -o hello ./code/cur_code.cpp`, (error, stdout, stderr) => { 
         if (error) { 
           console.error(`exec error: ${error}`); 
+          res.status(200).send({
+            success:false,
+            opstatus:"compile",
+            error:stderr
+          })
           return; 
         } 
         console.log(`stdout: ${stdout}`); 
@@ -30,16 +35,25 @@ app.post('/upload', (req, res) => {
         exec('./hello', (error, stdout, stderr) => { 
           if (error) { 
             console.error(`exec error: ${error}`); 
+            res.status(200).send({
+              success:false,
+              opstatus:"run",
+              error:error
+            })
             return; 
           } 
           console.log(`stdout: ${stdout}`); 
           console.error(`stderr: ${stderr}`); 
-          res.send(stdout);
+          res.status(200).send({
+            success:true,
+            opstatus:"done",
+            output:stdout
+          });
         }); 
     }); 
    
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`GCC container listening at http://localhost:${port}`);
 });
