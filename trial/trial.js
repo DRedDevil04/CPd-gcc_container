@@ -11,14 +11,14 @@ app.post('/upload', (req, res) => {
 
     }
     file = req.files.myFile;
-    file.mv('./cur_code.c', err => {
+    file.mv('./cur_code.cpp', err => {
         if (err) {
             return res.status(500).send(err);
         }
         
         
     });
-    exec(`gcc -o hello ./cur_code.c`, (error, stdout, stderr) => { 
+    exec(`g++ -o hello ./cur_code.cpp`, (error, stdout, stderr) => { 
         if (error) { 
           console.error(`exec error: ${error}`); 
           return; 
