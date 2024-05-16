@@ -9,9 +9,8 @@ import { deleteUpload } from "./deleteUploads.js";
 const app = express();
 const port = 3005;
 
-// app.use(fileUpload());
 const upload = multer({ dest: "uploads/" });
-// const submissionUpload = upload.("myFile")
+
 app.post("/upload", upload.any(), (req, res) => {
   const file = req.files[0];
   const testIP = req.files[1];
