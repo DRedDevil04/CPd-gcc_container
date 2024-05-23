@@ -1,11 +1,8 @@
 # Fetching the minified node image on apline linux
 FROM node:slim
 
-# Declaring env
-ENV NODE_ENV development
-
 # Setting up the work directory
-WORKDIR /trial
+WORKDIR /judge
 
 # Copying all the files in our project
 COPY . .
@@ -16,7 +13,7 @@ RUN apt-get update
 RUN apt-get install -y g++
 # RUN apt-get install timelimit
 # Starting our application
-CMD [ "node", "trial.js" ]
+CMD [ "node", "backend.js" ]
 
 # Exposing server port
-EXPOSE 3000
+EXPOSE 3005
