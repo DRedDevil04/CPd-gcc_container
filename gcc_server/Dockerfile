@@ -10,7 +10,7 @@ COPY . .
 # Installing dependencies
 RUN npm install
 RUN apt-get update
-RUN apt-get install -y g++
+RUN apt install g++-12 -y
 # RUN apt-get install timelimit
 # Starting our application
 CMD [ "node", "backend.js" ]

@@ -19,7 +19,7 @@ app.post("/upload", upload.any(), (req, res) => {
   exec(
     `mv ./${file.path} ./uploads/${file.filename}.cpp`,
     (error, stdout, stderr) => {
-      exec(`g++-13 -o ./${file.path} ./${file.path}.cpp`, (error, stdout, stderr) => {
+      exec(`g++-12 -o ./${file.path} ./${file.path}.cpp`, (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
           return res.status(200).send({
